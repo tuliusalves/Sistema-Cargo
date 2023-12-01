@@ -1,18 +1,21 @@
 package cargo;
 
-public class CargoJunior extends Cargo{
-    private String junior;
+import beneficios.Senioridade;
+import senioridade.Beneficios;
+
+public class CargoJunior extends Cargo implements Beneficios {
+    private Senioridade junior;
     private int nivel;
     public CargoJunior() {
         super();
         this.nivel = 1;
-        this.junior = "Junior";
+        this.junior = Senioridade.JUNIOR;
     }
 
     public int getNivel() {return nivel;}
 
     @Override
-    public String getNome() {return super.getNome() + junior;}
+    public String getNome() {return super.nome + junior;}
 
     @Override
     public double getSalarioBase() {
@@ -24,11 +27,21 @@ public class CargoJunior extends Cargo{
         return " Vale refeição";
     }
 
+    @Override
+    public double calcularSalario() {
+        return salarioBase*1;
+    }
+
     public String toString(){
         return "Cargo Junior{" +
                 "nome='" + getNome() + '\'' +
                 ", salarioBase=" + getSalarioBase() +
-                ", beneficio='" + getBeneficio() + '\'' +
+                ", beneficio='" + obterSenioridade() + '\'' +
                 '}';
+    }
+
+    @Override
+    public String obterSenioridade() {
+        return getBeneficio();
     }
 }

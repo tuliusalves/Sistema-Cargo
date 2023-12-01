@@ -1,9 +1,9 @@
 package cargo;
 
-public class Cargo {
-    private String nome;
-    private double salarioBase;
-    private String beneficio;
+public abstract class Cargo {
+    protected String nome;
+    protected double salarioBase;
+    protected String beneficio;
 
     public Cargo(){
         this.nome="Desenvolvedor java ";
@@ -17,9 +17,7 @@ public class Cargo {
         this.beneficio = beneficio;
     }
 
-    public String getNome() {
-        return nome;
-    }
+    public abstract String getNome();
 
     public double getSalarioBase() {
         return salarioBase;
@@ -29,6 +27,7 @@ public class Cargo {
         return beneficio;
     }
 
+    public abstract double calcularSalario();
 
     public String toString(int i) {
         CargoJunior cargoJunior = new CargoJunior();
